@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "start": "webpack-dev-server --config ./cfg/webpack/common",
+    "server-watch": "webpack --watch --config ./cfg/webpack/server",
     "build": "webpack --config ./cfg/webpack/common"
   },
   "keywords": [],
