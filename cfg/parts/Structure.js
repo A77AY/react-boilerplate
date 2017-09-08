@@ -7,8 +7,8 @@ module.exports = {
     TMP: 'tmp',
     PUB: 'pub',
     Src: {
-        SERVER: 'entry/server.jsx',
-        CLIENT: 'entry/client.jsx'
+        SERVER: 'server/server.jsx',
+        CLIENT: 'client/client.jsx'
     },
     Pub: {
         JS: 'js',

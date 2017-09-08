@@ -1,5 +1,5 @@
 const express = require('express');
-const App = require('../../cfg');
+const App = require('../../cfg/index');
 
 const app = express();
 
