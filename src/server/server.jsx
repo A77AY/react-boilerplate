@@ -1,3 +1,4 @@
+require('babel-polyfill');
 const express = require('express');
 const App = require('../../cfg');
 const routes = require('./routes.jsx');
