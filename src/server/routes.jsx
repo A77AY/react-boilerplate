@@ -1,5 +1,5 @@
 const express = require('express');
-const App = require('../../cfg/index');
+const App = require('../../cfg');
 
 const app = express.Router();
 
