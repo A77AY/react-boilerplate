@@ -1,21 +1,11 @@
 const express = require('express');
-const App = require('../../cfg/index');
+const App = require('../../cfg');
+const routes = require('./routes.jsx');
 
 const app = express();
 
-app.get('/', function (req, res) {
-    res.send(`<!DOCTYPE html>
-    <html>
-    <head>
-    <title>Тест</title>
-    </head>
-    <body>
-    <div id='app'/>
-    <script src="${App.DevelopmentServer.URL}/${App.Structure.PUB}/${App.Structure.Pub.JS}/client.js"></script>
-    </body>
-    </html>`);
-});
+app.use((...args) => routes(...args));
 
 app.listen(App.Server.PORT, App.Server.HOST, function () {
-    console.log('Server started')
+    console.log(`App listening on port ${App.Server.PORT}`)
 });
