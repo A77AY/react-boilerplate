@@ -1,13 +1,21 @@
-require('babel-polyfill');
-const express = require('express');
+import 'babel-polyfill'
+import express from 'express'
+import routes from './routes'
+
 const App = require('../../cfg');
-const routes = require('./routes.jsx');
 
 const app = express();
 
 app.use((...args) => routes(...args));
 
 if (module.hot) {
+    module.hot.status(status => {
+        switch (status) {
+            case 'abort':
+                process.send('restart');
+                break;
+        }
+    });
     module.hot.accept('./routes', () => {
         System.import('./routes').then(routes => routes)
     });

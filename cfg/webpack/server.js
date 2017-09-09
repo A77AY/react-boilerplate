@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const App = require('../App');
 const getNodeModules = require('../utils/getNodeModules');
 
@@ -56,7 +57,12 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new CleanWebpackPlugin([
+            path.join(App.Paths.TMP, '*.*')
+        ], {
+            root: App.Paths.ROOT
+        })
     ],
     externals: getNodeModules(App.Paths.NODE_MODULES)
 };
