@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 const App = require('../../cfg');
 
 const app = express.Router();
@@ -7,7 +7,7 @@ app.get('*', (req, res, next) => {
     res.send(`<!DOCTYPE html>
     <html>
     <head>
-    <title>Тест</title>
+    <title>Test</title>
     </head>
     <body>
     <div id='app'></div>
@@ -16,4 +16,4 @@ app.get('*', (req, res, next) => {
     </html>`);
 });
 
-module.exports = app;
+export default app;
