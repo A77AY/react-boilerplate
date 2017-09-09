@@ -5,7 +5,7 @@
   "scripts": {
     "start": "webpack-dev-server --config ./cfg/webpack/common",
     "server-watch": "webpack --watch --config ./cfg/webpack/server",
-    "server": "nodemon ./tmp/server.js --ignore *.*",
+    "server": "node ./cfg/utils/processManager ./tmp/server.js",
     "build": "webpack --config ./cfg/webpack/common"
   },
   "keywords": [],
