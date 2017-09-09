@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "description": "",
   "scripts": {
-    "start": "webpack-dev-server --config ./cfg/webpack/common",
-    "server-watch": "webpack --watch --config ./cfg/webpack/server",
+    "start": "concurrently -k --names \"DEV-CLIENT,DEV-SERVER,--SERVER--\" --prefix-colors \"bgBlue.bold,bgBlue.bold,bgMagenta.bold\" \"npm run dev-client\" \"npm run dev-server\" \"npm run server\"",
+    "dev-client": "webpack-dev-server --config ./cfg/webpack/common",
+    "dev-server": "webpack --watch --config ./cfg/webpack/server",
     "server": "node ./cfg/utils/processManager ./tmp/server.js",
     "build": "webpack --config ./cfg/webpack/common"
   },
@@ -29,6 +30,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
     "commander": "^2.11.0",
+    "concurrently": "^3.5.0",
     "react-hot-loader": "3.0.0-beta.7",
     "webpack": "^3.5.6",
     "webpack-dev-server": "^2.7.1",

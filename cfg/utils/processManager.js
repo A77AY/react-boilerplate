@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const cp = require('child_process');
 const program = require('commander');
 
@@ -12,6 +13,14 @@ class Server {
         this.addEventListeners();
     }
 
+    autostart() {
+        if (fs.existsSync(this.serverPath)) {
+            this.start();
+        } else {
+            setTimeout(() => this.autostart(), 1000);
+        }
+    }
+
     addEventListeners() {
         this.server.on('message', (msg) => {
             switch (msg) {
@@ -23,7 +32,7 @@ class Server {
     }
 
     stop() {
-        if(!!this.server) this.server.kill();
+        if (!!this.server) this.server.kill();
         this.server = null;
     }
 
@@ -38,7 +47,7 @@ program
     .arguments('<serverPath>')
     .action(function (serverPath) {
         const server = new Server(serverPath);
-        server.start();
+        server.autostart();
     });
 
 program.parse(process.argv);
